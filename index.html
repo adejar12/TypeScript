@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript</title>
+    <style>
+        * {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Caso não queira importar varios arquivos, o ts permite compilar todos os arquivos em um unico novo -->
+    <!-- tsc -w -outFile 'nome do novo arquivo' 'arquivo1' 'arquivo2' 'arquivo3' ... 'arquivoN' -->
+    <!-- esse novo arquivo tera os dados de todos os outros nele  -->
+    <!-- <script src="namespaces/geometriaCirc.js"></script>  -->
+    <!--<script src="namespaces/geometriaRet.js"></script>  -->
+    <!--<script src="namespaces/namespaces.js"></script>  -->
+
+    <!-- Esse systemjs é basicamente para conseguir usar import e export no browser -->
+    <script src="node_modules\systemjs\dist\system.js"></script>
+    <!-- Comentando a linha de baixo pq se não da erro, já que ela usa import e export -->
+    <!--<script src="modules/modules.js"></script> -->
+    <script>
+        SystemJS.config({
+            baseUrl: '/modules',
+            packages: {
+                '/modules': {
+                    defaltJSExtensio: true
+                }
+            }
+        })
+
+        SystemJS.import('./modules/modules.js')
+    </script>
+    <!-- Só esta aqui para conseguir executar a diferença entre dias que esta no genericos -->
+    <script src="classes/classes.js"></script>
+    <script src="genericos/genericos.js"></script>
+</body>
+
+</html>
