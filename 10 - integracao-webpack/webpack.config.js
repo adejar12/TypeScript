@@ -1,5 +1,5 @@
-const { resolve } = require("path");
 const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   module: "production", // pode ser 2 tipos: development ou production
@@ -9,6 +9,11 @@ module.exports = {
     filename: "app.min.js", // o nome do arquivo que será gerado
     path: path.join(__dirname, "dist"), // a localização do arquivo
   },
+  plugins: [
+    new CopyPlugin({
+      patterns: [{ from: "public" }],
+    }),
+  ], // esse plugin copia os arquivos de public para o diretório dist
   resolve: {
     extensions: [".ts", ".js"], // extensões que o webpack vai procurar
   },
