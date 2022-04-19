@@ -4,6 +4,12 @@ const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
   module: "production", // pode ser 2 tipos: development ou production
   entry: "./src/main.ts", // a partir de qual arquivo o webpack vai começar a buscar os arquivos
+  devServer: {
+    // configurações do servidor
+    static: { directory: path.join(__dirname, "dist") }, // é a mesma pasta de destino, no output },
+    port: 9000,
+    hot: true, // se vai atualizar automaticamente
+  },
   output: {
     // na hora de exportar os arquivos
     filename: "app.min.js", // o nome do arquivo que será gerado
